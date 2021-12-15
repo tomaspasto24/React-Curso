@@ -9,19 +9,19 @@
 //En caso de tener una exportanción default (heroes) y una exportación con desestructuración (owners).
 import heroes, { owners } from '../data/heroes';
 
-console.log(owners);
+// console.log(owners);
 
-const getHeroeById = (id) => {
+export const getHeroeById = (id) => {
     return heroes.find(heroe => heroe.id == id);
 }
 //Otra forma:
 // const getHeroeById = (id) => heroes.find(heroe => heroe.id == id);
 
-console.log(getHeroeById(1));
+// console.log(getHeroeById(1));
 
 //Filtrar muchos elementos.
 const getHeroresByOwner = (owner) => {
     return heroes.filter(heroe => heroe.owner.toLocaleLowerCase() === owner.toLocaleLowerCase());
 }
 
-console.log(getHeroresByOwner('dc'));
+// console.log(getHeroresByOwner('dc'));
