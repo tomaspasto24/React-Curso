@@ -10,5 +10,5 @@ import './index.css';
 const divRoot = document.querySelector('#root');
 
 // Metodo render que toma como primer parametro lo que se quiere renderizar (componente) y como segundo la referencia a la etiqueta.
-// ReactDOM.render( <PrimeraApp saludo="Hola Mundo."/>, divRoot );
-ReactDOM.render( <CounterApp value={10} />, divRoot);
+// ReactDOM.render( < PrimeraApp saludo='Hola, soy Goku' />, divRoot );
+ReactDOM.render( <CounterApp />, divRoot);

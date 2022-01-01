@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 // con los que estan basados en funciones. FC (Funcional Component).
 
 const PrimeraApp = ( { saludo, subtitulo } ) => {
+
     //Se puede renderizar en HTML todas las variables menos objetos en si y booleanos.
     const persona = {
         nombre: 'Esteban',
         edad: 33
     };
+    
     // Para retornar varios elementos se usa los parentesis y una etiqueta fragment, div o <> como en el caso, 
     // las divs se acumulan por eso es preferible usar Fragment o <>.
     return (
@@ -16,8 +18,8 @@ const PrimeraApp = ( { saludo, subtitulo } ) => {
             {/* Se puede poner cualquier variable de javascript dentro de los {} */}
             <h1> {saludo} </h1>
             {/* Convierte el objeto en string para poder renderizarlo. */}
-            <pre> { JSON.stringify(persona) } </pre>
-            <p> {subtitulo} </p>
+            {/* <pre> { JSON.stringify(persona) } </pre>*/}
+            <p>{subtitulo}</p> 
         </>
         );
 }
