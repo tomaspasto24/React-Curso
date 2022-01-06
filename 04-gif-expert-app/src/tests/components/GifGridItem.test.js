@@ -1,6 +1,6 @@
 import { shallow } from "enzyme"
 import React from 'react';
-import { GifGridItem } from "../Components/GifGridItem";
+import { GifGridItem } from "../../Components/GifGridItem";
 
 describe('Test sobre GifGridItem.js', () => {
     const id = 22;

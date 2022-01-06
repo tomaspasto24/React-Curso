@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react/cjs/react.development'
 import PropTypes from 'prop-types';
 
-export const AddCategory = ( {setCategories} ) => {
+export const AddCategory = ( { setCategories } ) => {
 
     //useState del valor que se encuentra en la barra de búsqueda.
     const [inputValue, setInputValue] = useState('');
@@ -24,6 +24,7 @@ export const AddCategory = ( {setCategories} ) => {
 
     return (
         <form onSubmit={ handleSubmit }>
+            <p> {inputValue} </p>
           <input
                 type="text"
                 value={inputValue}
