@@ -1,7 +1,7 @@
 import React from "react";
 import reactDOM from "react-dom";
-import {CounterWithCustomHook} from './components/01-useState/CounterWithCustomHook';
+import { Layout } from "./components/05-useLayoutEffect/Layout";
 
 const app = document.querySelector('#root');
 
-reactDOM.render(<CounterWithCustomHook />, app);
+reactDOM.render(<Layout />, app);

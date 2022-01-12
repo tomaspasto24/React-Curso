@@ -5,11 +5,11 @@ import './counter.css';
 
 export const CounterWithCustomHook = () => {
 
-    const { state, increment, decrement, reset } = useCounter( 10 );
+    const { counter, increment, decrement, reset } = useCounter( 10 );
     
     return (
         <>
-        <h1>CounterWithCustomHook: { state }</h1>
+        <h1>CounterWithCustomHook: { counter }</h1>
         <hr />
 
         <button onClick={ () => increment() } className="btn">+1</button>
