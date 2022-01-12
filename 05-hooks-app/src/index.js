@@ -1,7 +1,7 @@
 import React from "react";
 import reactDOM from "react-dom";
-import { Layout } from "./components/05-useLayoutEffect/Layout";
+import { MemoHook } from "./components/06-memos/MemoHook";
 
 const app = document.querySelector('#root');
 
-reactDOM.render(<Layout />, app);
+reactDOM.render(<MemoHook />, app);
