@@ -5,6 +5,10 @@ export const useForm = ( initialState = {} ) => {
 
     const [formValues, setFormValues] = useState(initialState);
 
+    const reset = () => {
+        setFormValues( initialState );
+    }
+
     // Desustructuración del target del evento que se ingresa.
     const handleInputChange = ( {target} ) => 
     {
@@ -14,6 +18,6 @@ export const useForm = ( initialState = {} ) => {
         });
     };
 
-    return [ formValues, handleInputChange ];
+    return [ formValues, handleInputChange, reset];
 
 };

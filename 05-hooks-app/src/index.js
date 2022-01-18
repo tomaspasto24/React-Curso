@@ -1,7 +1,9 @@
 import React from "react";
 import reactDOM from "react-dom";
-import { MemoHook } from "./components/06-memos/MemoHook";
+import { MainApp } from "./components/09-useContext/MainApp";
 
 const app = document.querySelector('#root');
 
-reactDOM.render(<MemoHook />, app);
+reactDOM.render(<MainApp />, app);
+
+
