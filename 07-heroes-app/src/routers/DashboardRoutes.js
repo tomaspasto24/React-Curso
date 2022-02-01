@@ -10,13 +10,17 @@ export const DashboardRoutes = () => {
   return (
       <>
         <Navbar />
-        <Routes>
-            <Route path="dc" element={ <DCScreen /> } />
-            <Route path="marvel" element={ <MarvelScreen /> } />
-            <Route path="search" element={ <SearchScreen /> } />
-            <Route path="hero" element={ <HeroScreen /> } />
-            <Route path="/" element={ <SearchScreen /> } />
-        </Routes>
+
+        <div className='container'>
+          <Routes>
+              <Route path="dc" element={ <DCScreen /> } />
+              <Route path="marvel" element={ <MarvelScreen /> } />
+              <Route path="search" element={ <SearchScreen /> } />
+              {/* heroeId es un argumento obligatorio que se debe ingresar en el URL. */}
+              <Route path="hero/:heroeId" element={ <HeroScreen /> } />
+              <Route path="/" element={ <SearchScreen /> } />
+          </Routes>
+        </div>
       </>
   )
   ;
