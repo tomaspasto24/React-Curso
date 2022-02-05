@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const heroeList = require.context(`../../assets/heroes`, true);
+
 //Se desestructuran todas las propiedades del Hero que se ingresa.
 export const HeroCard = ( {
     id,
@@ -11,7 +13,7 @@ export const HeroCard = ( {
     characters,
     } ) => {
     
-    const imagePath = `/assets/heroes/${id}.jpg`;
+    const imagePath = heroeList(`./${id}.jpg`);
 
     return (
         <div className='col'>

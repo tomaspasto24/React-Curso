@@ -1,18 +1,22 @@
 import React, { useMemo } from 'react';
+import 'animate.css';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { getHeroById } from '../../helpers/getHeroById';
+// import batman from '../../assets/heroes/dc-batman.jpg'; // estático
 
-import 'animate.css';
+const heroes = require.context('../../assets/heroes', true);
+
 
 export const HeroScreen = () => {
   
   const navigate = useNavigate();
 
   // useParams es un hook que lee la información que se envía por URL, en este caso es el id del heroe.
+  // extrae lo que hay en hero/:heroeId del AppRoutes.
   const { heroeId} = useParams();
   
-  const imagePath = `/assets/heroes/${heroeId}.jpg`;
-
+  // const imagePath = `/assets/heroes/${heroeId}.jpg`; // Desde public/assets
+  const imagePath = heroes(`./${ heroeId }.jpg`);
   // useMemo es un hook que sirve para memorizar lo que devuelve la función getHeroById y no tenga que volverla a llamar.
   // El segundo argumento es la dependencia, en caso de que heroeId cambie se vuelve a llamar la función.
   const heroe = useMemo( () => getHeroById(heroeId), [heroeId]);

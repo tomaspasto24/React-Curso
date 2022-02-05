@@ -1,11 +1,15 @@
-import { useContext } from 'react/cjs/react.development';
+import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../auth/authContext';
-import { types } from '../types/types';
 
-export const PublicRoute = ( { children } ) => {
-    const {user, dispatch} = useContext(AuthContext);
+
+
+export const PublicRoute = ({ children }) => {
+
+    const { user } = useContext(AuthContext);
+
     
-    (user.logged) && dispatch({ type: types.logout })
-    
-    return children;
-};
+    return user.logged
+        ? <Navigate to="/marvel" />
+        : children
+}
