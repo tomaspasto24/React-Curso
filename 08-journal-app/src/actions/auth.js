@@ -1,10 +1,12 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from "../types/types"
 import { uiFinishLoading, uiStartLoading } from './ui';
+import Swal from 'sweetalert2';
+import { notesLogout } from './notes';
 
 export const startLoginEmailPassword = ( email, password ) => {
     
-    // Retorna una func con parámetro dispatch cuando es una acción async.
+    // Retorna una func con parámetro dispatch cuando es una acción async. Esto es gracias a thunk.
     return ( dispatch ) => {
 
         dispatch( uiStartLoading() );
@@ -16,10 +18,12 @@ export const startLoginEmailPassword = ( email, password ) => {
                 dispatch( uiFinishLoading() );
 
             })
-            .catch( err => {
+            .catch( ({ message }) => {
 
-                console.log(err);
                 dispatch( uiFinishLoading() );
+                
+                //Libreria de error.
+                Swal.fire('Error', message, 'error');
             
             } );
         
@@ -39,9 +43,9 @@ export const startRegisterWithEmailPasswordName = ( email, password, name) => {
                     login( user.uid, user.displayName )
                 )
             }) 
-            .catch ( err => {
-                console.log(err);
-            });
+            .catch ( ({ message }) => {
+                Swal.fire('Error', message, 'error');
+            }); 
 
     }
 };
@@ -69,3 +73,21 @@ export const login = ( uid, displayName ) => ({
     }
 
 });
+
+
+export const startLogout = () => {
+    
+    return async( dispatch ) => {
+
+        await firebase.auth().signOut();
+
+        dispatch( logout() );
+
+        dispatch( notesLogout() );
+    };
+
+};
+
+export const logout = () => ({
+    type: types.logout
+})

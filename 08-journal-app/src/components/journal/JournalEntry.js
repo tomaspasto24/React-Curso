@@ -1,30 +1,52 @@
 import React from 'react';
+import moment from 'moment';
+import { useDispatch, useSelector } from 'react-redux';
+import { activeNote } from '../../actions/notes';
 
-export const JournalEntry = () => {
+export const JournalEntry = ( { id, title, body, date, url } ) => {
+
+    const noteDate = moment(date);
+    
+    const dispatch = useDispatch();
+
+    const { notes } = useSelector( state => state.notes );
+
+    const note = { title, body, date, url }
+    
+    const handleEntryClick = () => {
+        dispatch( activeNote(id, note ) );
+    };
+
     return (
-        <div className='journal__entry pointer'>
+        <div 
+            className='journal__entry pointer'
+            onClick={ handleEntryClick }
+        >
 
-            <div 
-                className='jorunal__entry-picture'
-                style={{
-                    backgroundSize: 'cover',
-                    backgroundImage: 'url(https://1.bp.blogspot.com/-79DdxzZkDog/T76QV6v5IuI/AAAAAAAAAEY/6DzpGZzsmfA/s320/homerocatolico_456_336.jpg)'
-                }}
-            ></div>
+            {
+                ( url ) &&
+                <div 
+                    className='jorunal__entry-picture'
+                    style={{
+                        backgroundSize: 'cover',
+                        backgroundImage: `url(${url})`
+                    }}
+                ></div>
+            }
 
             <div className='journal__entry-body'>
                 <p className='journal__entry-title'>
-                    Un Nuevo dia
+                    { title }
                 </p>
 
                 <p className='journal__entry-content'>
-                    Hoaslasdasjdasjdasjldjlsadjldsajlsajlsajldsjladjlsadljasdljasdljads 
+                    { body }
                 </p>
             </div>
 
             <div className='journal__entry-date-box'>
-                <span>Monday</span>
-                <h4>24</h4>
+                <span> { noteDate.format('dddd') } </span>
+                <h4> { noteDate.format('Do') } </h4>
             </div>
 
         </div>
