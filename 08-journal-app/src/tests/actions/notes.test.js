@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store' //ES6 modules
 import thunk from 'redux-thunk' 
-import { startNewNote } from '../../actions/notes';
+import { startLoadingNotes, startNewNote } from '../../actions/notes';
 import { db } from '../../firebase/firebase-config';
 import { types } from '../../types/types';
 
@@ -12,7 +12,7 @@ const store = mockStore({
         uid: 'Testing',
     }
 })
-
+jest.setTimeout(10000);
 
 describe('Pruebas sobre notes actions.', () => {
 
@@ -51,5 +51,4 @@ describe('Pruebas sobre notes actions.', () => {
         await db.doc(`/Testing/journal/notes/${docId}`).delete();
 
     });
-
 });
